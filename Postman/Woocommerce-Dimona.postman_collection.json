@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "a6dd904a-50e6-4ea5-b77e-9db428e65f3f",
+		"name": "TexxSupply Copy",
+		"description": "API de integração entre Texx Supply Woocommerce e Dimona EPrint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26691976"
+	},
+	"item": [
+		{
+			"name": "Wordpress",
+			"item": [
+				{
+					"name": "Extract orders from Woocommerce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "url-do-seu-ecommerce/wp-json/wc/v2/orders?consumer_key=ck-do-seu-ecommerce&consumer_secret=cs-do-seu-ecommerce",
+							"host": [
+								"url-do-seu-ecommerce"
+							],
+							"path": [
+								"wp-json",
+								"wc",
+								"v2",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "consumer_key",
+									"value": "ck-do-seu-ecommerce"
+								},
+								{
+									"key": "consumer_secret",
+									"value": "cs-do-seu-ecommerce"
+								}
+							]
+						},
+						"description": "End-point Responsavel por retornar todas as informações dos ultimos 10 pedidos feitos no WooCommerce. Na Uri da Requisição está sendo passado as minhas chaves CK: Consumer_key, e CS: Consumer_secret."
+					},
+					"response": []
+				}
+			],
+			"description": "Essa Pasta está agrupado o End-Point para extrair pedidos do WooCommerce."
+		},
+		{
+			"name": "Dimona",
+			"item": [
+				{
+					"name": "Create Order Dimona",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "api-key-da-sua-conta-dimona"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipping_speed\": \"pac\",\n    \"order_id\": \"4101\",\n    \"customer_name\": \"Fulano da Silva\",\n     \"customer_document\": \"123.456.789-13\",\n    \"customer_email\": \"exemplo@gmail.com\",\n    \"items\": [\n        {\n            \"name\": \"Camisa Polo P Branca\",\n            \"sku\": \"12345\",\n            \"qty\": 2,\n            \"dimona_sku_id\": \"010603110108\" \n        }\n    ],\n     \"address\": {\n        \"name\": \"Receiver Name\",\n        \"street\": \"Rua Buenos Aires\",\n        \"number\": \"334\",\n        \"complement\": \"Loja\",\n        \"city\": \"Rio de Janeiro\",\n        \"state\": \"RJ\",\n        \"zipcode\": \"20061000\",\n        \"neighborhood\": \"Centro\",\n        \"phone\": \"2121093661\",\n        \"country\": \"BR\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://camisadimona.com.br/api/v2/order",
+							"protocol": "https",
+							"host": [
+								"camisadimona",
+								"com",
+								"br"
+							],
+							"path": [
+								"api",
+								"v2",
+								"order"
+							]
+						},
+						"description": "End-Point usado para criar os pedidos dentro da base da Dimona."
+					},
+					"response": [
+						{
+							"name": "Pedido Criado com Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"shipping_speed\": \"sedex\",\n    \"order_id\": \"1691889024\",\n    \"customer_name\": \"Fulano da Silva\",\n    \"items\": [\n            {\"name\":\"Camisa P Amarela\", \"sku\":\"12345\", \"qty\":2},\n            {\"name\":\"Camisa M Verde\", \"sku\":\"12346\", \"qty\":1},\n            {\"name\":\"Camisa G Vermelha\", \"sku\":\"12347\", \"qty\":1}\n        ],\n\t\"address\":\n\t\t{\n\t\t\t\"street\":\"Rua Buenos Aires\", \n\t\t\t\"number\":\"334\",\n\t\t\t\"complement\":\"Loja\", \n\t\t\t\"city\":\"Rio de Janeiro\",\n\t\t\t\"state\":\"RJ\",\n\t\t\t\"zipcode\":\"20061001\",\n\t\t\t\"neighborhood\":\"Centro\"\n\t\t}\n}"
+								},
+								"url": {
+									"raw": "{{api-domain}}/api/v2/order",
+									"host": [
+										"{{api-domain}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"order"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "CF-RAY",
+									"value": "408e7717e9af4afd-GRU",
+									"name": "CF-RAY",
+									"description": "Custom header"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"name": "Content-Encoding",
+									"description": "The type of encoding used on the data."
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Apr 2018 16:49:09 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+									"name": "Expect-CT",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "laravel_session=eyJpdiI6IklOWGFVVjJTV0Q1YVRPcFdZUEU1Y3c9PSIsInZhbHVlIjoibjZqVGNNM2VPekJHTFwvMGtGQWFhUG8zejhFdk9yaVhJeWo3XC9kdDA3Zm91SElVaXV4SnlQNStMVjJOd2tnc1doaEowcGc2QzlkSENzMDRCeDBNQ2dxZz09IiwibWFjIjoiNDYwZTRiYjQ4Mjk2ZGVjOWFmYTM4MzVmMGY3MmQ2YmI2MmNiMmJlYjgyYWMwZThiNzQ3M2IwMjNkM2VhNWM4NCJ9; expires=Mon, 09-Apr-2018 18:49:08 GMT; Max-Age=7200; path=/; HttpOnly",
+									"name": "Set-Cookie",
+									"description": "an HTTP cookie"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60",
+									"name": "X-RateLimit-Limit",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59",
+									"name": "X-RateLimit-Remaining",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": true,
+									"domain": "camisadimona.com.br",
+									"path": "/",
+									"secure": false,
+									"value": "d6f1a22752a6159c9468ca3bd41273d7a1511818280",
+									"key": "__cfduid"
+								},
+								{
+									"expires": "Invalid Date",
+									"httpOnly": true,
+									"domain": "camisadimona.com.br",
+									"path": "/",
+									"secure": false,
+									"value": "eyJpdiI6IklOWGFVVjJTV0Q1YVRPcFdZUEU1Y3c9PSIsInZhbHVlIjoibjZqVGNNM2VPekJHTFwvMGtGQWFhUG8zejhFdk9yaVhJeWo3XC9kdDA3Zm91SElVaXV4SnlQNStMVjJOd2tnc1doaEowcGc2QzlkSENzMDRCeDBNQ2dxZz09IiwibWFjIjoiNDYwZTRiYjQ4Mjk2ZGVjOWFmYTM4MzVmMGY3MmQ2YmI2MmNiMmJlYjgyYWMwZThiNzQ3M2IwMjNkM2VhNWM4NCJ9",
+									"key": "laravel_session"
+								}
+							],
+							"body": "{\"order\":\"064-435-556\"}"
+						},
+						{
+							"name": "Erro: Pedido já existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"shipping_speed\": \"sedex\",\n    \"order_id\": \"1234\",\n    \"customer_name\": \"Fulano da Silva\",\n    \"items\": [\n            {\"name\":\"Camisa P Amarela\", \"sku\":\"12345\", \"qty\":2},\n            {\"name\":\"Camisa M Verde\", \"sku\":\"12346\", \"qty\":1},\n            {\"name\":\"Camisa G Vermelha\", \"sku\":\"12347\", \"qty\":1}\n        ],\n\t\"address\":\n\t\t{\n\t\t\t\"street\":\"Rua Buenos Aires\", \n\t\t\t\"number\":\"334\",\n\t\t\t\"complement\":\"Loja\", \n\t\t\t\"city\":\"Rio de Janeiro\",\n\t\t\t\"state\":\"RJ\",\n\t\t\t\"zipcode\":\"20061001\",\n\t\t\t\"neighborhood\":\"Centro\"\n\t\t}\n}"
+								},
+								"url": {
+									"raw": "{{api-domain}}/api/v2/order",
+									"host": [
+										"{{api-domain}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"order"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "CF-RAY",
+									"value": "408e7be3ef084afd-GRU",
+									"name": "CF-RAY",
+									"description": "Custom header"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Apr 2018 16:52:25 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+									"name": "Expect-CT",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "laravel_session=eyJpdiI6IjhtblZEUmhZc3hpVDBndW9BMHZVc0E9PSIsInZhbHVlIjoiQ0xoNVZWZEtxaTBpTlZNZ045WE1zN3A2QWxlTEE4UUg1NWZ0YmlrTTdzNmhFSWlBSDRlaFZ0T3NhSVNOQVZaK3lLZTcrMDVzK3hDY0RVNk5IYjJxb0E9PSIsIm1hYyI6IjQwOTAxYzQ5ZDk2YmZhYTI2MTAwNDU1YjE2NzVkNmQxYWUzMzM1MWE4MjdjNGE0OWI0OTlhNDhjZmUyYzg4OWEifQ%3D%3D; expires=Mon, 09-Apr-2018 18:52:25 GMT; Max-Age=7200; path=/; HttpOnly",
+									"name": "Set-Cookie",
+									"description": "an HTTP cookie"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60",
+									"name": "X-RateLimit-Limit",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59",
+									"name": "X-RateLimit-Remaining",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": true,
+									"domain": "camisadimona.com.br",
+									"path": "/",
+									"secure": false,
+									"value": "d6f1a22752a6159c9468ca3bd41273d7a1511818280",
+									"key": "__cfduid"
+								},
+								{
+									"expires": "Invalid Date",
+									"httpOnly": true,
+									"domain": "camisadimona.com.br",
+									"path": "/",
+									"secure": false,
+									"value": "eyJpdiI6IjhtblZEUmhZc3hpVDBndW9BMHZVc0E9PSIsInZhbHVlIjoiQ0xoNVZWZEtxaTBpTlZNZ045WE1zN3A2QWxlTEE4UUg1NWZ0YmlrTTdzNmhFSWlBSDRlaFZ0T3NhSVNOQVZaK3lLZTcrMDVzK3hDY0RVNk5IYjJxb0E9PSIsIm1hYyI6IjQwOTAxYzQ5ZDk2YmZhYTI2MTAwNDU1YjE2NzVkNmQxYWUzMzM1MWE4MjdjNGE0OWI0OTlhNDhjZmUyYzg4OWEifQ%3D%3D",
+									"key": "laravel_session"
+								}
+							],
+							"body": "\"O pedido 1234 j\\u00e1 existe\""
+						}
+					]
+				}
+			],
+			"description": "Nessas pasta estão os end-points da Dimona que serão usados nessa integração."
+		},
+		{
+			"name": "TexxDimona",
+			"item": [
+				{
+					"name": "Insert OrderTexxSupply To Dimona",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "url-onde-esta-sua-api:8080/texxsupply/api/integration/ordersToDimona",
+							"host": [
+								"url-onde-esta-sua-api"
+							],
+							"port": "8080",
+							"path": [
+								"texxsupply",
+								"api",
+								"integration",
+								"ordersToDimona"
+							]
+						},
+						"description": "End-Point responsavel por consumir o end-point (Extract orders from Woocommerce), e tratar todos os objetos JSON retornados, incluindo todas as regras de negócio Texx, para levalos perfeitamente, e apenas os pedidos necessários até o End-Point (Create Order Dimona)."
+					},
+					"response": []
+				}
+			],
+			"description": "Essa pasta está os End-Points da API de integrassão."
+		}
+	]
+}

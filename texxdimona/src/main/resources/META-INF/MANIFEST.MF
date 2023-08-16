@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Main-Class: com.texxsupply.texxdimona.TexxdimonaApplication
+Class-Path: byte-buddy-1.14.5.jar hamcrest-2.2.jar jackson-annotations-2
+ .15.2.jar spring-boot-devtools-3.1.2.jar commons-fileupload-1.5.jar spr
+ ing-webmvc-6.0.11.jar bcutil-jdk18on-1.73.jar aspectjweaver-1.9.19.jar 
+ json-path-2.8.0.jar lombok-1.18.28.jar apiguardian-api-1.1.2.jar bcprov
+ -jdk18on-1.73.jar log4j-to-slf4j-2.20.0.jar spring-boot-starter-3.1.2.j
+ ar jakarta.annotation-api-2.1.1.jar snakeyaml-1.33.jar asm-9.3.jar spri
+ ng-web-6.0.11.jar spring-core-6.0.11.jar spring-boot-starter-test-3.1.2
+ .jar jsonassert-1.5.1.jar spring-boot-starter-json-3.1.2.jar log4j-api-
+ 2.20.0.jar spring-context-6.0.11.jar spring-boot-starter-aop-3.1.2.jar 
+ junit-jupiter-params-5.9.3.jar json-smart-2.4.11.jar mockito-core-5.3.1
+ .jar jackson-datatype-jdk8-2.15.2.jar mockito-junit-jupiter-5.3.1.jar s
+ pring-boot-starter-web-3.1.2.jar logback-classic-1.4.8.jar spring-cloud
+ -starter-openfeign-4.0.4.jar spring-expression-6.0.11.jar spring-securi
+ ty-rsa-1.0.12.RELEASE.jar spring-cloud-starter-4.0.4.jar commons-io-2.1
+ 1.0.jar jakarta.xml.bind-api-4.0.0.jar assertj-core-3.24.2.jar tomcat-e
+ mbed-core-10.1.11.jar spring-security-crypto-6.1.2.jar spring-boot-3.1.
+ 2.jar spring-boot-test-autoconfigure-3.1.2.jar spring-boot-autoconfigur
+ e-3.1.2.jar junit-jupiter-engine-5.9.3.jar tomcat-embed-el-10.1.11.jar 
+ tomcat-embed-websocket-10.1.11.jar logback-core-1.4.8.jar spring-beans-
+ 6.0.11.jar jackson-core-2.15.2.jar spring-cloud-context-4.0.4.jar slf4j
+ -api-2.0.7.jar jackson-databind-2.15.2.jar spring-jcl-6.0.11.jar microm
+ eter-commons-1.11.2.jar spring-cloud-openfeign-core-4.0.4.jar jackson-m
+ odule-parameter-names-2.15.2.jar jul-to-slf4j-2.0.7.jar jackson-datatyp
+ e-jsr310-2.15.2.jar android-json-0.0.20131108.vaadin1.jar spring-cloud-
+ commons-4.0.4.jar micrometer-observation-1.11.2.jar junit-jupiter-api-5
+ .9.3.jar opentest4j-1.2.0.jar accessors-smart-2.4.11.jar spring-aop-6.0
+ .11.jar xmlunit-core-2.9.1.jar feign-form-3.8.0.jar spring-boot-test-3.
+ 1.2.jar bcpkix-jdk18on-1.73.jar spring-boot-starter-logging-3.1.2.jar f
+ eign-slf4j-12.4.jar spring-boot-starter-tomcat-3.1.2.jar feign-core-12.
+ 4.jar jakarta.activation-api-2.1.2.jar junit-platform-commons-1.9.3.jar
+  objenesis-3.3.jar junit-platform-engine-1.9.3.jar byte-buddy-agent-1.1
+ 4.5.jar spring-test-6.0.11.jar junit-jupiter-5.9.3.jar feign-form-sprin
+ g-3.8.0.jar
+
