@@ -1,6 +1,6 @@
 document.getElementById("executeButton").addEventListener("click", async () => {
     try {
-      const response = await fetch("http://ec2-52-67-191-251.sa-east-1.compute.amazonaws.com:8080/texxsupply/api/integration/ordersToDimona", {
+      const response = await fetch("url-do-seu-end-point", {
         method: "POST",
         mode: "no-cors"
       });
