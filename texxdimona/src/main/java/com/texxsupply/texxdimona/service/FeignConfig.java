@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FeignConfig {
 
-    private final String apiKey = "43868c550c8530bd955160b5cf97cadb";
+    private final String apiKey = "api-key-Dimona";
 
     @Bean
     public RequestInterceptor apiKeyInterceptor() {

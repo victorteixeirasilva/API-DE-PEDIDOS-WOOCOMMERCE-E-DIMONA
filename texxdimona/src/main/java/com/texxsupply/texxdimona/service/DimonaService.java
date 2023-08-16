@@ -26,7 +26,7 @@ public interface DimonaService {
     @Headers({
             "Accept: application/json",
             "Content-Type: application/json",
-            "api-key: 43868c550c8530bd955160b5cf97cadb"
+            "api-key: api-key-Dimona"
     })
     @PostMapping
     public ResponseEntity insertOrder(@RequestBody OrderDimona orderDimona);

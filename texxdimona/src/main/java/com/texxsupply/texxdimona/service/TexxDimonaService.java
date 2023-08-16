@@ -30,7 +30,7 @@ public class TexxDimonaService {
     @Autowired
     private DimonaService dimonaService;
 
-    private String API_KEY = "43868c550c8530bd955160b5cf97cadb";
+    private String API_KEY = "api-key-Dimona";
     private String ACCEPT = "application/json";
     private String CONTENT_TYPE = "application/json";
 
